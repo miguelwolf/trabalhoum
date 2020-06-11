@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Trabalho Um</title>
+</h:head>
+<h:body>
+
+	<h:form id="formLivro">
+		<h:outputLabel>Livro:</h:outputLabel>
+		<h:inputText value="#{livroBean.livro.nomeLivro}" />
+		<br />
+
+		<h:outputLabel>Editora:</h:outputLabel>
+		<h:selectOneMenu value="#{livroBean.livro.editora}"
+			converter="omnifaces.SelectItemsConverter">
+			<f:selectItems value="#{livroBean.editoras}" var="edit"
+				itemLabel="#{edit.nomeEditora}" itemValue="#{edit}" />
+		</h:selectOneMenu>
+
+		<br />
+		<br />
+
+		<h:commandButton value="Atualizar" actionListener="#{livroBean.atualizar()}" />
+		<h:outputText value="#{livroBean.resultado}" />
+
+		<br />
+		<h:commandButton value="Início" action="index?faces-redirect=true" />
+
+	</h:form>
+
+
+
+	<h:form>
+
+
+
+		<p:dataTable id="livroTabela" var="l" value="#{livroBean.livros}"
+			paginator="true" rows="10" emptyMessage="Não há registros na lista"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="10,15,25,50,100" rowKey="#{l.codLivro}"
+			selection="#{l}" selectionMode="single">
+			<f:facet name="header">Lista de livros</f:facet>
+			<p:ajax event="rowSelect" listener="#{livroBean.onRowSelect}"
+				update="formLivro" /> 
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText styleClass="outputText" value="Cod livro"></h:outputText>
+				</f:facet>
+				<h:outputText styleClass="outputText" value="#{l.codLivro}"></h:outputText>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText styleClass="outputText" value="Nome livro"></h:outputText>
+				</f:facet>
+				<h:outputText styleClass="outputText" value="#{l.nomeLivro}"></h:outputText>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText styleClass="outputText" value="Cod editora"></h:outputText>
+				</f:facet>
+				<h:outputText styleClass="outputText"
+					value="#{l.editora.codEditora}"></h:outputText>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">
+					<h:outputText styleClass="outputText" value="Nome editora"></h:outputText>
+				</f:facet>
+				<h:outputText styleClass="outputText"
+					value="#{l.editora.nomeEditora}"></h:outputText>
+			</p:column>
+
+		</p:dataTable>
+
+
+		<!-- <p:dataTable id="tableStateDT" var="l" value="#{livroBean.livros}" widgetVar="carsTable" multiViewState="true"
+                 rows="10" paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15"
+                 selectionMode="single" selection="#{livroBean.livro}" rowKey="#{l.codLivro}"
+                 emptyMessage="No cars found with given criteria" >
+ 
+        <f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Search all fields:" />
+                <p:inputText id="globalFilter" onkeyup="PF('carsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+            </p:outputPanel>
+        </f:facet>
+ 
+        <p:ajax event="rowSelect" update=":form:carDetail" oncomplete="PF('carDialog').show()" />
+ 
+        <p:column headerText="Id" filterBy="#{car.id}" sortBy="#{car.id}" filterMatchMode="contains">
+            <h:outputText value="#{car.id}" />
+        </p:column>
+ 
+        <p:column headerText="Year" filterBy="#{car.year}" sortBy="#{car.year}" filterMatchMode="startsWith">
+            <h:outputText value="#{car.year}" />
+        </p:column>
+ 
+        <p:column headerText="Brand" filterBy="#{car.brand}" sortBy="#{car.brand}" filterMatchMode="exact">
+            <f:facet name="filter">
+                <p:selectOneMenu onchange="PF('carsTable').filter()" style="width:100%; box-sizing: border-box;" >
+                    <f:selectItem itemLabel="Select One" itemValue="#{null}" noSelectionOption="true" />
+                    <f:selectItems value="#{dtTableStateView.brands}" />
+                </p:selectOneMenu>
+            </f:facet>
+            <h:outputText value="#{car.brand}" />
+        </p:column>
+ 
+        <p:column headerText="Color" filterBy="#{car.color}" sortBy="#{car.color}" filterMatchMode="in">
+            <f:facet name="filter">
+                <p:selectCheckboxMenu label="Colors" onchange="PF('carsTable').filter()" style="width:100%; box-sizing: border-box;" scrollHeight="150">
+                    <f:selectItems value="#{dtTableStateView.colors}" />
+                </p:selectCheckboxMenu>
+            </f:facet>
+            <h:outputText value="#{car.color}" />
+        </p:column>
+ 
+        <f:facet name="paginatorTopLeft">
+            <p:commandButton value="Clear table state" action="#{dtTableStateView.clearTableState}" update="@form"/>
+        </f:facet>
+    </p:dataTable> -->
+
+	</h:form>
+
+
+
+
+
+</h:body>
+</html>

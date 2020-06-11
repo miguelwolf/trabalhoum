@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>TrabalhoUm - Início</title>
+</head>
+<body>
+
+
+<h:form>   
+    <p:growl id="growl" life="2000" />
+    
+    <h:commandButton value="Cadastrar livro" action="cadastrar_livro?faces-redirect=true" />
+    
+    <h:commandButton value="Cadastrar editora" action="cadastrar_editora?faces-redirect=true" />
+    
+    <h:commandButton value="Listar/Editar livros" action="listar_livros?faces-redirect=true" />
+    
+    <h:commandButton value="Listar/Editar Editoras" action="listar_editoras?faces-redirect=true" />
+     
+    <!-- <p:commandButton value="Cadastrar livro" id="cadastrarLivro" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+    
+    <p:commandButton value="Cadastrar editora" id="cadastrarEditora" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+    
+    <p:commandButton value="Listar livros e editoras" id="listar" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+    
+    <p:commandButton value="Editar livro" id="editarLivro" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+    
+    <p:commandButton value="Editar editora" id="editarEditora" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" /> -->
+ 
+    <!-- <p:commandLink id="nonAjax" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false">
+        <h:outputText value="Non-Ajax Submit" />
+    </p:commandLink>       -->
+</h:form>
+
+</body>
+</html>
